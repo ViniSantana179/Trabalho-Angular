@@ -1,0 +1,83 @@
+<div class="container p-5">
+  <div class="row form-container">
+    <div
+      [ngStyle]="{ 'background-color': 'white' }"
+      class="col-6 border border-light rounded p-5 shadow"
+      *ngIf="formulario"
+    >
+      <h6>{{ tituloFormulario }}</h6>
+      <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
+        <div class="form-group">
+          <label>Cpf</label
+          ><input
+            type="text"
+            class="form-control form-control-sm"
+            formControlName="cpf"
+          />
+        </div>
+        <div class="form-group">
+          <label>Nome</label
+          ><input
+            type="text"
+            class="form-control form-control-sm"
+            formControlName="nome"
+          />
+        </div>
+        <div class="form-group">
+          <label>Email</label
+          ><input
+            type="email"
+            class="form-control form-control-sm"
+            formControlName="email"
+          />
+        </div>
+        <div class="form-group">
+          <label>Telefone</label
+          ><input
+            type="text"
+            class="form-control form-control-sm"
+            formControlName="telefone"
+          />
+        </div>
+        <div class="container">
+          <div class="row">
+            <div>
+              <button type="submit" class="btn btn-sm btn-outline-secondary">
+                Salvar
+              </button>
+            </div>
+            <div class="pl-1" (click)="reset()">
+              <button type="button" class="btn btn-sm btn-light">Voltar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <table class="cliente-table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th>Acao</th>
+        `
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes">
+        <td>{{ cliente.nome }}</td>
+        <td>{{ cliente.cpf }}</td>
+        <td>{{ cliente.email }}</td>
+        <td>{{ cliente.telefone }}</td>
+        <a (click)="remover(cliente.id)" routerLink="/listarClientes"
+          >Remover</a
+        >
+      </tr>
+    </tbody>
+  </table>
+</div>
